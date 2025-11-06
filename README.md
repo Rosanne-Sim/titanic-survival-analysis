@@ -1,56 +1,68 @@
-# 🛳️ Titanic Survival Analysis
+# 🛳️ Titanic Survival Prediction
 
-> **Predicting passenger survival on the Titanic using Python, Pandas, and Scikit-Learn.**
+A simple machine learning project based on the Kaggle competition “Titanic: Machine Learning from Disaster.”  
+
+This notebook predicts passenger survival using Python, Pandas, and a Random Forest Classifier.
 
 ---
 
-## Objective
-This project aims to predict whether a passenger survived the Titanic disaster using demographic and socio-economic features such as age, gender, class, and fare.
+## Project Overview
+The goal is to build a predictive model that determines whether a passenger survived the Titanic disaster, based on features such as class, gender, and number of siblings/spouses on board.
 
 ---
 
 ## Dataset
-Data source: [Kaggle – Titanic: Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data)
+Source: [Kaggle – Titanic: Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data)
 
-- `train.csv` – training data with survival labels  
-- `test.csv` – testing data without survival labels  
+Files used:
+- `train.csv` – training dataset with survival labels  
+- `test.csv` – testing dataset (no labels)  
 - `gender_submission.csv` – sample submission file  
 
 ---
 
-## Data Cleaning & Feature Engineering
-- Handled missing values for `Age` and `Embarked`  
-- Encoded categorical variables (`Sex`, `Embarked`)  
-- Created new features:  
-  - `FamilySize` = `SibSp` + `Parch` + 1  
-  - `IsAlone` flag  
-- Normalized continuous features
+## Key Steps
+1. **Import Libraries & Load Data**  
+   Read train and test datasets with Pandas.  
+
+2. **Data Exploration**  
+   Checked survival rates by gender:  
+   - About 74% of women survived.  
+   - About 19% of men survived.  
+
+3. **Feature Selection & Encoding**  
+   Selected features: `Pclass`, `Sex`, `SibSp`, `Parch`  
+   Converted categorical variables to numeric using `pd.get_dummies()`.
+
+4. **Model Training**  
+   Used `RandomForestClassifier` with 100 estimators and max depth of 5.  
+   Trained on the full training set and predicted survival on test data.  
+
+5. **Submission File**  
+   Created a `submission.csv` with columns:
+   - `PassengerId`
+   - `Survived`
+
+   The notebook prints:  
+   `"Your submission was successfully saved!"`
 
 ---
 
-## Model Development
-- **Baseline:** Logistic Regression  
-- **Advanced Models:** Random Forest, XGBoost  
-- Evaluated using cross-validation and accuracy metrics  
-
-**Best model:** Random Forest with ~80% accuracy  
-
----
-
-## 🧰 Tech Stack
-`Python` • `Pandas` • `NumPy` • `Matplotlib` • `Seaborn` • `Scikit-Learn` • `Jupyter Notebook`
+## Tools Used
+- Python  
+- Pandas  
+- NumPy  
+- Scikit-learn  
 
 ---
 
-## Key Insights
-- Gender and passenger class were the strongest predictors of survival.  
-- Feature engineering improved model interpretability and performance.  
-- Handling missing data was critical for achieving stable accuracy.
+## Result
+Generated a valid submission file for Kaggle.  
+The model achieved around 75–80% accuracy (depending on parameters and seed).
 
 ---
 
 ## Author
 **Rosanne Sim**  
-rosannesimtongenn@gmail.com  
+📧 rosannesimtongenn@gmail.com  
 [LinkedIn](https://linkedin.com/in/rosannesim) | [GitHub](https://github.com/rosannesim)
-
